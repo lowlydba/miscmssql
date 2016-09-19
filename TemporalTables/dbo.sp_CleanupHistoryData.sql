@@ -1,6 +1,26 @@
-/* This version differs from the MSDN version (https://msdn.microsoft.com/en-us/library/mt637341.aspx) in two ways:
+/* 
+----------------------
+Info
+----------------------
+
+This version differs from the MSDN version (https://msdn.microsoft.com/en-us/library/mt637341.aspx) in two ways:
  1. It works if your history table is in a different schema
  2. Provides variable values in the error catching clause for easier debugging
+
+----------------------
+Usage
+----------------------
+
+DECLARE @temporalTableSchema sysname = 'TableName'
+DECLARE @temporalTableName sysname = 'SchemaName'
+DECLARE @cleanupOlderThanDate datetime2(7) = GETDATE() - 7;
+
+EXECUTE [dbo].[sp_CleanupHistoryData] 
+   @temporalTableSchema 
+  ,@temporalTableName 
+  ,@cleanupOlderThanDate
+GO
+
  */
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_CleanupHistoryData]') AND type in (N'P', N'PC'))
 BEGIN
