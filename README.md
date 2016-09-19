@@ -1,0 +1,2 @@
+# MiscMSSQL
+Various MSSQL scripts
