@@ -21,6 +21,12 @@ To grab the latest versions of scripts
 - [Apex SQL Search](http://www.apexsql.com/sql_tools_search.aspx)
 - [SQL Sentry Plan Explorer](https://www.sentryone.com/plan-explorer/)
 - [Is It SQL?](http://www.scalesql.com/isitsql/)
+- [SchemaZen](https://github.com/sethreno/schemazen#schemazen---script-and-create-sql-server-objects-quickly)
+- [DBFit](http://www.methodsandtools.com/tools/dbfit.php)
+- [RedGate DLM Dashboard](http://www.red-gate.com/products/dlm/dlm-dashboard/)
 
 ## Good Reads
 - [Modern Data Analysis: Don't Trust Your Spreadsheet](https://www.betterment.com/resources/inside-betterment/engineering/modern-data-analysis-dont-trust-your-spreadsheet/) (Betterment Blog)
+- [T-SQL Interview Questions](https://www.mssqltips.com/sqlservertip/1450/sql-server-developer-tsql-interview-questions/) (MSSQL Tips)
+- [Developer Interview Questions](https://www.brentozar.com/archive/2009/06/top-10-developer-interview-questions-about-sql-server/) (Brent Ozar)
+- [Tuning Cost Threshold](http://sqlblog.com/blogs/jonathan_kehayias/archive/2010/01/19/tuning-cost-threshold-of-parallelism-from-the-plan-cache.aspx)
