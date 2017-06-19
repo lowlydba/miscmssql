@@ -21,3 +21,6 @@ To grab the latest versions of scripts
 - [Apex SQL Search](http://www.apexsql.com/sql_tools_search.aspx)
 - [SQL Sentry Plan Explorer](https://www.sentryone.com/plan-explorer/)
 - [Is It SQL?](http://www.scalesql.com/isitsql/)
+
+## Good Reads
+- [Modern Data Analysis: Don't Trust Your Spreadsheet](https://www.betterment.com/resources/inside-betterment/engineering/modern-data-analysis-dont-trust-your-spreadsheet/) (Betterment Blog)
