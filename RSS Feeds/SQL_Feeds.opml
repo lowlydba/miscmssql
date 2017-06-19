@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<opml version="1.0">
+    <head>
+        <title>John subscriptions in feedly Cloud</title>
+    </head>
+    <body>
+        <outline text="Sql" title="Sql">
+            <outline type="rss" text="Midnight SQL Consulting, LLC" title="Midnight SQL Consulting, LLC" xmlUrl="http://www.midnightsql.com/feed/" htmlUrl="http://www.MidnightSQL.com"/>
+            <outline type="rss" text="SQL Server Customer Advisory Team" title="SQL Server Customer Advisory Team" xmlUrl="http://blogs.msdn.com/sqlcat/rss.xml" htmlUrl="https://blogs.msdn.microsoft.com/sqlcat"/>
+            <outline type="rss" text="Data Delivery" title="Data Delivery" xmlUrl="http://awsinsider.net/rss-feeds/data-delivery.aspx" htmlUrl="https://awsinsider.net/rss-feeds/data-delivery.aspx"/>
+            <outline type="rss" text="SQL Server Blog" title="SQL Server Blog" xmlUrl="http://blogs.technet.com/dataplatforminsider/rss.xml" htmlUrl="https://blogs.technet.microsoft.com/dataplatforminsider"/>
+            <outline type="rss" text="SQLblog.com - The SQL Server blog spot on the web" title="SQLblog.com - The SQL Server blog spot on the web" xmlUrl="http://sqlblog.com/blogs/MainFeed.aspx" htmlUrl="http://2www.sqlblog.com/blogs/default.aspx"/>
+            <outline type="rss" text="DBA Reactions" title="DBA Reactions" xmlUrl="http://dbareactions.com/rss" htmlUrl="http://dbareactions.com/"/>
+            <outline type="rss" text="Recent Questions" title="Recent Questions" xmlUrl="http://dba.stackexchange.com/feeds" htmlUrl="https://dba.stackexchange.com/questions"/>
+            <outline type="rss" text="Microsoft Security Bulletins" title="Microsoft Security Bulletins" xmlUrl="https://technet.microsoft.com/en-us/security/rss/bulletin" htmlUrl="https://technet.microsoft.com/en-us/security/bulletin"/>
+            <outline type="rss" text="Google Cloud Big Data and Machine Learning Blog" title="Google Cloud Big Data and Machine Learning Blog" xmlUrl="https://cloud.google.com/blog/big-data/feed.xml"/>
+            <outline type="rss" text="Compose Articles" title="Compose Articles" xmlUrl="https://compose.io/articles/rss/" htmlUrl="https://www.compose.com/articles/"/>
+            <outline type="rss" text="The Database Avenger" title="The Database Avenger" xmlUrl="http://thedatabaseavenger.com/feed/" htmlUrl="http://thedatabaseavenger.com"/>
+            <outline type="rss" text="Brent Ozar Unlimited®" title="Brent Ozar Unlimited®" xmlUrl="http://feeds.feedburner.com/BrentOzar-SqlServerDba" htmlUrl="https://www.brentozar.com"/>
+            <outline type="rss" text="Glenn Berry" title="Glenn Berry" xmlUrl="http://www.sqlskills.com/blogs/glenn/feed/rss2" htmlUrl="https://www.sqlskills.com/blogs/glenn"/>
+            <outline type="rss" text="Agile SQL Club" title="Agile SQL Club" xmlUrl="http://feeds.feedburner.com/agilesql/Blog" htmlUrl="https://the.agilesql.club/BlogRss"/>
+            <outline type="rss" text="idera" title="idera" xmlUrl="http://blog.idera.com/feed/" htmlUrl="http://blog.idera.com"/>
+            <outline type="rss" text="Vertabelo Blog | Data Modeling &amp; Web Development" title="Vertabelo Blog | Data Modeling &amp; Web Development" xmlUrl="http://www.vertabelo.com/_rss/blog.xml" htmlUrl="http://www.vertabelo.com/blog"/>
+            <outline type="rss" text="Glenn Berry's SQL Server Performance" title="Glenn Berry's SQL Server Performance" xmlUrl="http://sqlserverperformance.wordpress.com/feed/" htmlUrl="https://sqlserverperformance.wordpress.com"/>
+            <outline type="rss" text="blog – dbatools" title="blog – dbatools" xmlUrl="https://dbatools.io/blog/feed/" htmlUrl="https://dbatools.io"/>
+            <outline type="rss" text="Simple Talk rss feed" title="Simple Talk rss feed" xmlUrl="http://www.simple-talk.com/feed/" htmlUrl="https://www.simple-talk.com"/>
+        </outline>
+    </body>
+</opml>
