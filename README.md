@@ -24,6 +24,10 @@ To grab the latest versions of scripts
 - [SchemaZen](https://github.com/sethreno/schemazen#schemazen---script-and-create-sql-server-objects-quickly)
 - [DBFit](http://www.methodsandtools.com/tools/dbfit.php)
 - [RedGate DLM Dashboard](http://www.red-gate.com/products/dlm/dlm-dashboard/)
+- [SQL Fiddle](http://sqlfiddle.com/) 
+- [Idera SQL Job Manager](https://www.idera.com/productssolutions/freetools/sqljobmanager)
+- [Manduka SQL Code Analyzer](http://www.manduka.tech/#/home)
+- [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli/) (Microsoft)
 
 ## Good Reads
 - [Modern Data Analysis: Don't Trust Your Spreadsheet](https://www.betterment.com/resources/inside-betterment/engineering/modern-data-analysis-dont-trust-your-spreadsheet/) (Betterment Blog)
