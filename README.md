@@ -15,11 +15,14 @@ To grab the latest versions of scripts
 
 - [SQL Style Guide](http://www.sqlstyle.guide/)
 
-## Tools/Plugins
+## Plugins
 - [Apex SQL Refactor](http://www.apexsql.com/sql_tools_refactor.aspx)
 - [Apex SQL Complete](http://www.apexsql.com/sql_tools_complete.aspx)
 - [Apex SQL Search](http://www.apexsql.com/sql_tools_search.aspx)
 - [SQL Sentry Plan Explorer](https://www.sentryone.com/plan-explorer/)
+- [Dell Spotlight Essentials](https://www.spotlightessentials.com/spotlight-extensions)
+
+## Tools
 - [Is It SQL?](http://www.scalesql.com/isitsql/)
 - [SchemaZen](https://github.com/sethreno/schemazen#schemazen---script-and-create-sql-server-objects-quickly)
 - [DBFit](http://www.methodsandtools.com/tools/dbfit.php)
@@ -27,7 +30,7 @@ To grab the latest versions of scripts
 - [SQL Fiddle](http://sqlfiddle.com/) 
 - [Idera SQL Job Manager](https://www.idera.com/productssolutions/freetools/sqljobmanager)
 - [Manduka SQL Code Analyzer](http://www.manduka.tech/#/home)
-- [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli/) (Microsoft)
+- [Microsoft mssql-scripter](https://github.com/Microsoft/sql-xplat-cli/)
 
 ## Good Reads
 - [Modern Data Analysis: Don't Trust Your Spreadsheet](https://www.betterment.com/resources/inside-betterment/engineering/modern-data-analysis-dont-trust-your-spreadsheet/) (Betterment Blog)
