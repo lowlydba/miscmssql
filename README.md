@@ -9,7 +9,7 @@ To grab the latest versions of scripts
 - [Ola's Maintenance Scripts](https://ola.hallengren.com/sql-server-backup.html)
 - [Brent's First Responder Kit](https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit)
 - [Glenn Berry's Diagnostic Queries](https://www.sqlskills.com/blogs/glenn/category/dmv-queries/)
-- [DBA Tools](http://www.dbatools.io) (powershell)
+- [Tiger Tool Box](https://github.com/Microsoft/tigertoolbox)
 
 ## References
 
@@ -31,6 +31,7 @@ To grab the latest versions of scripts
 - [Idera SQL Job Manager](https://www.idera.com/productssolutions/freetools/sqljobmanager)
 - [Manduka SQL Code Analyzer](http://www.manduka.tech/#/home)
 - [Microsoft mssql-scripter](https://github.com/Microsoft/sql-xplat-cli/)
+- [DBA Tools](http://www.dbatools.io)
 
 ## Good Reads
 - [Modern Data Analysis: Don't Trust Your Spreadsheet](https://www.betterment.com/resources/inside-betterment/engineering/modern-data-analysis-dont-trust-your-spreadsheet/) (Betterment Blog)
