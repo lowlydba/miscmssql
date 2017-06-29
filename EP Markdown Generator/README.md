@@ -20,3 +20,6 @@ The only parameter for this procedure is a database name, since the original usa
 It can be called via bcp to output a readme.md file to be pushed to a git repo:
 
     bcp "EXEC dbo.usp_genEPMarkdown @dbname = 'AdventureWorks'" queryout readme.md -S myserver.com -c
+
+# Compatibility
+Only tested on SQL Server 2016 SP1 thus far, but should be backwards compatible through at least SQL 2008 R2.
