@@ -30,15 +30,16 @@ DECLARE @sql NVARCHAR(MAX);
 /* Generate markdown for views */
 SET @sql = N'USE ' + @dbname + '
 
+--Create table to hold EP data
+CREATE TABLE #markdown ( 
+   [id] INT IDENTITY(1,1),
+   [value] NVARCHAR(MAX));
+
 --Verify that one or more views exists w/ extended properties
 IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
 		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''V'')
 BEGIN
-
-    CREATE TABLE #markdown ( 
-	   [id] INT IDENTITY(1,1),
-	   [value] NVARCHAR(MAX));
 
     --Build header rows 
     INSERT INTO #markdown
