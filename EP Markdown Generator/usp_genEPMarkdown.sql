@@ -182,7 +182,7 @@ BEGIN
 	   INNER JOIN [sys].[all_objects] AS [o] ON [o].[object_id] = [ep].[major_id]
     WHERE   [ep].[name] = ''MS_Description''
 	   AND [o].[is_ms_shipped] = 0 -- User objects only
-	   AND [o].[type] = ''IF'' -- SQL_STORED_PROCEDURES
+	   AND [o].[type] = ''IF'' -- Inline table value functions
     ORDER BY SCHEMA_NAME([o].[schema_id]), [o].[type_desc], OBJECT_NAME([ep].major_id);
 
 END
@@ -207,7 +207,7 @@ BEGIN
 	   INNER JOIN [sys].[all_objects] AS [o] ON [o].[object_id] = [ep].[major_id]
     WHERE   [ep].[name] = ''MS_Description''
 	   AND [o].[is_ms_shipped] = 0 -- User objects only
-	   AND [o].[type] = ''C'' -- SQL_STORED_PROCEDURES
+	   AND [o].[type] = ''C'' -- Check Constraints
     ORDER BY SCHEMA_NAME([o].[schema_id]), [o].[type_desc], OBJECT_NAME([ep].major_id);
 
 END
@@ -222,7 +222,7 @@ IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
 BEGIN
     
     INSERT INTO #markdown
-    VALUES  (''## Check Constraints'')
+    VALUES  (''## Default Constraints'')
 		 ,(''| Schema | Name | Comment |'')
 		 ,(''| ------ | ---- | ------- |'');
     
@@ -232,7 +232,7 @@ BEGIN
 	   INNER JOIN [sys].[all_objects] AS [o] ON [o].[object_id] = [ep].[major_id]
     WHERE   [ep].[name] = ''MS_Description''
 	   AND [o].[is_ms_shipped] = 0 -- User objects only
-	   AND [o].[type] = ''D'' -- SQL_STORED_PROCEDURES
+	   AND [o].[type] = ''D'' -- Default Constraints
     ORDER BY SCHEMA_NAME([o].[schema_id]), [o].[type_desc], OBJECT_NAME([ep].major_id);
 END
 '
@@ -256,7 +256,7 @@ BEGIN
 	   INNER JOIN [sys].[all_objects] AS [o] ON [o].[object_id] = [ep].[major_id]
     WHERE   [ep].[name] = ''MS_Description''
 	   AND [o].[is_ms_shipped] = 0 -- User objects only
-	   AND [o].[type] = ''UQ'' -- SQL_STORED_PROCEDURES
+	   AND [o].[type] = ''UQ'' -- Unique Constraints
     ORDER BY SCHEMA_NAME([o].[schema_id]), [o].[type_desc], OBJECT_NAME([ep].major_id);
 END
 
