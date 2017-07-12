@@ -10,8 +10,6 @@ EXEC dbo.sp_executesql @statement = N'CREATE PROCEDURE [dbo].[usp_genEPMarkdown]
 END
 GO
 
-
-
 ALTER   PROCEDURE [dbo].[usp_genEPMarkdown]
 					   @dbname SYSNAME = NULL
 AS
@@ -24,10 +22,10 @@ IF (@dbname IS NULL)
     END
 ELSE
     SET @dbname = QUOTENAME(@dbname); --Avoid injections
-
+	
 DECLARE @sql NVARCHAR(MAX);
    
-/* Generate markdown for check constraint */
+--Set initial db, create temp table, create table of contents
 SET @sql = N'USE ' + @dbname + '
 
 --Create table to hold EP data
@@ -35,6 +33,41 @@ CREATE TABLE #markdown (
    [id] INT IDENTITY(1,1),
    [value] NVARCHAR(MAX));
    
+--Insert title row for table of contents
+INSERT INTO #markdown (value)
+SELECT ''# Table Of Contents'';
+
+--Insert rows for table of contents
+INSERT INTO #markdown (value)
+SELECT DISTINCT CASE [o].[type_desc] 
+			 WHEN ''VIEW''
+				THEN ''* [Views](#views)''
+			 WHEN ''USER_TABLE''
+				THEN ''* [Tables](#tables)''
+			 WHEN ''TR''
+				THEN ''* [Triggers](#triggers)''
+			 WHEN ''IF''
+				THEN ''* [Inline Table Value Functions](#inline-table-value-functions)''
+			 WHEN ''C''
+				THEN ''* [Check Constraints](#check-constraints)''
+			 WHEN ''D''  
+				THEN ''* [Default Constraints](#default-constraints)''
+			 WHEN ''UQ''
+				THEN ''* [Unique Constraints](#unique-constraints)''
+			 WHEN ''SQL_SCALAR_FUNCTION''
+				THEN ''* [Scalar Functions](#scalar-functions)''
+			 WHEN ''SQL_STORED_PROCEDURE''
+				THEN ''* [Stored Procedures](#stored-procedures)''
+			 END AS [ToC]
+FROM [sys].[all_objects] AS [o]
+		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
+WHERE   [o].[is_ms_shipped] = 0 --User objects only
+    AND [o].[type_desc] IN (''VIEW'', ''USER_TABLE'', ''TR'', ''IF'', ''C'', ''D'', ''UQ'', ''SQL_SCALAR_FUNCTION'', ''SQL_STORED_PROCEDURE'') --Only supported objects
+ORDER BY [ToC] ASC --Ensure alphabetical order so the table matches the order they''re generated in below
+'
+   
+/* Generate markdown for check constraint */
+SET @sql = @sql + N'
 IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
 		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''C'')
@@ -250,12 +283,16 @@ BEGIN
     ORDER BY SCHEMA_NAME([o].[schema_id]), [o].[type_desc], OBJECT_NAME([ep].major_id);
 
 END
-
-    --Project all EPs
-    SELECT [value]
-    FROM #markdown
-    ORDER BY [ID] ASC;
 '
+
+/* Query temp table to return all markdown data */
+SET @sql = @sql + N'
+--Project all EPs
+SELECT [value]
+FROM #markdown
+ORDER BY [ID] ASC;
+'
+
 EXEC sp_executesql @sql;
 
 GO
