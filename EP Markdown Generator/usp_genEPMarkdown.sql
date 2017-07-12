@@ -23,6 +23,12 @@ IF (@dbname IS NULL)
 ELSE
     SET @dbname = QUOTENAME(@dbname); --Avoid injections
 	
+--Check if database exists
+IF NOT EXISTS (SELECT * FROM [sys].[databases] WHERE [name] = @dbname)
+	BEGIN;
+		THROW 51000, 'Database does not exist.', 1;
+	END;
+
 DECLARE @sql NVARCHAR(MAX);
    
 --Set initial db, create temp table, create table of contents

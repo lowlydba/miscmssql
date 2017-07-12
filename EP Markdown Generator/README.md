@@ -25,4 +25,4 @@ It can be called via bcp to output a readme.md that can be directly placed insid
     bcp "EXEC dbo.usp_genEPMarkdown @dbname = 'AdventureWorks'" queryout readme.md -S myserver.com -c
 
 # Compatibility
-Only tested on SQL Server 2016 SP1 thus far, but should be backwards compatible through at least SQL 2008 R2.
+Only tested on SQL Server 2016 SP1 thus far, but should be backwards compatible through at least SQL 2012 (due to usage of [`THROW`](https://docs.microsoft.com/en-us/sql/t-sql/language-elements/throw-transact-sql)). 
