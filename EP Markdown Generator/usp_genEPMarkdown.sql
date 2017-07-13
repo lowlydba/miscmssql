@@ -13,6 +13,8 @@ GO
 ALTER   PROCEDURE [dbo].[usp_genEPMarkdown]
 					   @dbname SYSNAME = NULL
 					  ,@epname SYSNAME = 'MS_Description'
+					  ,@exclude NVARCHAR(1000) = NULL
+					  ,@include NVARCHAR(1000) = NULL
 AS
 SET NOCOUNT ON;
 
@@ -30,7 +32,36 @@ ELSE
 
 DECLARE @sql NVARCHAR(MAX);
 DECLARE @ParamDefinition NVARCHAR(500);
-   
+DECLARE @allEPObjects NVARCHAR(500);
+
+SET @allEPObjects = N'''VIEW'', ''USER_TABLE'', ''TR'', ''IF'', ''C'', ''D'', ''UQ'', ''SQL_SCALAR_FUNCTION'', ''SQL_STORED_PROCEDURE'''
+select @allepobjects;
+/* Handle include/exclude list */
+--include null, include all
+IF @include IS NULL
+    --exclude null, exclude none
+    IF @exclude IS NULL
+	   BEGIN;
+		  --Set the list equal to all the values (declared as hardcoded above?)
+		  SELECT 'TODO';
+	   END;
+    ELSE IF @exclude IS NOT NULL
+	   BEGIN;
+		  --Include hardcoded list minus the excluded ones (select * from list left join excluded where excluded.id is null)
+		  SELECT 'TODO';
+	   END;
+--include not null, include only chosen (ignore exclude)
+ELSE IF @include IS NOT NULL AND @exclude IS NOT NULL
+    BEGIN;
+	   THROW 51000, 'Exclude list cannot be used with included list.', 1;
+    END;
+ELSE IF @include IS NOT NULL
+    BEGIN;
+	   --Set the list equal to the passed parameter
+	   SELECT 'TODO';
+    END;
+
+
 --Set initial db, create temp table, create table of contents
 SET @sql = N'USE ' + @dbname + '
 
