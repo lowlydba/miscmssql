@@ -16,7 +16,10 @@ It will create a table if properties exist for the following object types:
 - Check Constraints
 
 # Usage
-The only parameter for this procedure is a database name, since the original usage scenario for this was to be included in a utility database:
+There are two parameters:
+
+ - `dbname` - The name of the target database (mandatory)
+ - `epname` - The "name" value used in the extended properties (optional, default is MS_Description) 
 
     EXEC dbo.usp_genEPMarkdown @dbname = 'AdventureWorks'
 

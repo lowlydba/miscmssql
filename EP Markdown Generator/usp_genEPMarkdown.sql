@@ -12,24 +12,24 @@ GO
 
 ALTER   PROCEDURE [dbo].[usp_genEPMarkdown]
 					   @dbname SYSNAME = NULL
+					  ,@epname SYSNAME = 'MS_Description'
 AS
 SET NOCOUNT ON;
 
---Check if database name was passed.
+--Check if dbname was passed & is valid. 
 IF (@dbname IS NULL) 
     BEGIN;
-	   THROW 51000, 'No database provided.', 1;
-    END
-ELSE
-    SET @dbname = QUOTENAME(@dbname); --Avoid injections
-	
---Check if database exists
-IF NOT EXISTS (SELECT * FROM [sys].[databases] WHERE [name] = @dbname)
+		THROW 51000, 'No database provided.', 1;
+    END;
+ELSE IF NOT EXISTS (SELECT * FROM [sys].[databases] WHERE [name] = @dbname)
 	BEGIN;
 		THROW 51000, 'Database does not exist.', 1;
 	END;
+ELSE
+    SET @dbname = QUOTENAME(@dbname); --Avoid injections
 
 DECLARE @sql NVARCHAR(MAX);
+DECLARE @ParamDefinition NVARCHAR(500);
    
 --Set initial db, create temp table, create table of contents
 SET @sql = N'USE ' + @dbname + '
@@ -68,6 +68,7 @@ SELECT DISTINCT CASE [o].[type_desc]
 FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
 WHERE   [o].[is_ms_shipped] = 0 --User objects only
+    AND [ep].[name] = @extendedPropertyName
     AND [o].[type_desc] IN (''VIEW'', ''USER_TABLE'', ''TR'', ''IF'', ''C'', ''D'', ''UQ'', ''SQL_SCALAR_FUNCTION'', ''SQL_STORED_PROCEDURE'') --Only supported objects
 ORDER BY [ToC] ASC --Ensure alphabetical order so the table matches the order they''re generated in below
 '
@@ -76,7 +77,7 @@ ORDER BY [ToC] ASC --Ensure alphabetical order so the table matches the order th
 SET @sql = @sql + N'
 IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''C'')
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''C'' AND [ep].[name] = @extendedPropertyName) 
 BEGIN
     
     INSERT INTO #markdown
@@ -88,7 +89,7 @@ BEGIN
     SELECT CONCAT(SCHEMA_NAME([o].[schema_id]), '' | '', OBJECT_NAME([ep].major_id), '' | '', CAST([ep].[value] AS VARCHAR(200)))
     FROM [sys].[extended_properties] AS [ep]
 	   INNER JOIN [sys].[all_objects] AS [o] ON [o].[object_id] = [ep].[major_id]
-    WHERE   [ep].[name] = ''MS_Description''
+    WHERE   [ep].[name] = @extendedPropertyName
 	   AND [o].[is_ms_shipped] = 0 -- User objects only
 	   AND [o].[type] = ''C'' -- Check Constraints
     ORDER BY SCHEMA_NAME([o].[schema_id]), [o].[type_desc], OBJECT_NAME([ep].major_id);
@@ -100,7 +101,7 @@ END
 SET @sql = @sql + N'
 IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''D'')
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''D'' AND [ep].[name] = @extendedPropertyName)
 BEGIN
     
     INSERT INTO #markdown
@@ -112,7 +113,7 @@ BEGIN
     SELECT CONCAT(SCHEMA_NAME([o].[schema_id]), '' | '', OBJECT_NAME([ep].major_id), '' | '', CAST([ep].[value] AS VARCHAR(200)))
     FROM [sys].[extended_properties] AS [ep]
 	   INNER JOIN [sys].[all_objects] AS [o] ON [o].[object_id] = [ep].[major_id]
-    WHERE   [ep].[name] = ''MS_Description''
+    WHERE   [ep].[name] = @extendedPropertyName
 	   AND [o].[is_ms_shipped] = 0 -- User objects only
 	   AND [o].[type] = ''D'' -- Default Constraints
     ORDER BY SCHEMA_NAME([o].[schema_id]), [o].[type_desc], OBJECT_NAME([ep].major_id);
@@ -123,7 +124,7 @@ END
 SET @sql = @sql +  N'
 IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''IF'')
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''IF'' AND [ep].[name] = @extendedPropertyName)
 BEGIN
     
     INSERT INTO #markdown
@@ -135,7 +136,7 @@ BEGIN
     SELECT CONCAT(SCHEMA_NAME([o].[schema_id]), '' | '', OBJECT_NAME([ep].major_id), '' | '', CAST([ep].[value] AS VARCHAR(200)))
     FROM [sys].[extended_properties] AS [ep]
 	   INNER JOIN [sys].[all_objects] AS [o] ON [o].[object_id] = [ep].[major_id]
-    WHERE   [ep].[name] = ''MS_Description''
+    WHERE   [ep].[name] = @extendedPropertyName
 	   AND [o].[is_ms_shipped] = 0 -- User objects only
 	   AND [o].[type] = ''IF'' -- Inline table value functions
     ORDER BY SCHEMA_NAME([o].[schema_id]), [o].[type_desc], OBJECT_NAME([ep].major_id);
@@ -147,7 +148,7 @@ END
 SET @sql = @sql +  N'
 IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''FN'')
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''FN'' AND [ep].[name] = @extendedPropertyName)
 BEGIN
     
     INSERT INTO #markdown
@@ -159,7 +160,7 @@ BEGIN
     SELECT CONCAT(SCHEMA_NAME([o].[schema_id]), '' | '', OBJECT_NAME([ep].major_id), '' | '', CAST([ep].[value] AS VARCHAR(200)))
     FROM [sys].[extended_properties] AS [ep]
 	   INNER JOIN [sys].[all_objects] AS [o] ON [o].[object_id] = [ep].[major_id]
-    WHERE   [ep].[name] = ''MS_Description''
+    WHERE   [ep].[name] = @extendedPropertyName
 	   AND [o].[is_ms_shipped] = 0 -- User objects only
 	   AND [o].[type] = ''FN'' -- SCALAR_FUNCTIONS
     ORDER BY SCHEMA_NAME([o].[schema_id]), [o].[type_desc], OBJECT_NAME([ep].major_id);
@@ -170,7 +171,7 @@ END
 SET @sql = @sql +  N'
 IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''P'')
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''P'' AND [ep].[name] = @extendedPropertyName)
 BEGIN
     
     INSERT INTO #markdown
@@ -182,7 +183,7 @@ BEGIN
     SELECT  CONCAT(SCHEMA_NAME([o].[schema_id]), '' | '', OBJECT_NAME([ep].major_id), '' | '', CAST([ep].[value] AS VARCHAR(200)))
     FROM [sys].[extended_properties] AS [ep]
 	   INNER JOIN [sys].[all_objects] AS [o] ON [o].[object_id] = [ep].[major_id]
-    WHERE   [ep].[name] = ''MS_Description''
+    WHERE   [ep].[name] = @extendedPropertyName
 	   AND [o].[is_ms_shipped] = 0 -- User objects only
 	   AND [o].[type] = ''P'' -- SQL_STORED_PROCEDURES
     ORDER BY SCHEMA_NAME([o].[schema_id]), [o].[type_desc], OBJECT_NAME([ep].major_id);
@@ -193,7 +194,7 @@ END
 SET @sql = @sql +  N'
 IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''U'')
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''U'' AND [ep].[name] = @extendedPropertyName)
 BEGIN
     
     INSERT INTO #markdown
@@ -207,7 +208,7 @@ BEGIN
 	   INNER JOIN [sys].[all_objects] AS [o] ON [o].[object_id] = [ep].[major_id]
 	   LEFT JOIN [sys].[columns] AS [SysCols] ON [ep].[major_id] = [SysCols].[object_id]
 							 AND [ep].[minor_id] = [SysCols].[column_id]
-    WHERE   [ep].[name] = ''MS_Description''
+    WHERE   [ep].[name] = @extendedPropertyName
 	   AND [o].[is_ms_shipped] = 0 -- User objects only
 	   AND [o].[type] = ''U'' -- USER_TABLE
     ORDER BY SCHEMA_NAME([o].[schema_id]), [o].[type_desc], OBJECT_NAME([ep].major_id);
@@ -219,7 +220,7 @@ END
 SET @sql = @sql +  N'
 IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''TR'')
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''TR'' AND [ep].[name] = @extendedPropertyName)
 BEGIN
     
     INSERT INTO #markdown
@@ -231,7 +232,7 @@ BEGIN
     SELECT CONCAT(SCHEMA_NAME([o].[schema_id]), '' | '', OBJECT_NAME([ep].major_id), '' | '', CAST([ep].[value] AS VARCHAR(200)))
     FROM [sys].[extended_properties] AS [ep]
 	   INNER JOIN [sys].[all_objects] AS [o] ON [o].[object_id] = [ep].[major_id]
-    WHERE   [ep].[name] = ''MS_Description''
+    WHERE   [ep].[name] = @extendedPropertyName
 	   AND [o].[is_ms_shipped] = 0 -- User objects only
 	   AND [o].[type] = ''TR'' -- TRIGGERS
     ORDER BY SCHEMA_NAME([o].[schema_id]), [o].[type_desc], OBJECT_NAME([ep].major_id);
@@ -243,7 +244,7 @@ END
 SET @sql = @sql +  N'
 IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''UQ'')
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''UQ'' AND [ep].[name] = @extendedPropertyName)
 BEGIN
     
     INSERT INTO #markdown
@@ -255,7 +256,7 @@ BEGIN
     SELECT CONCAT(SCHEMA_NAME([o].[schema_id]), '' | '', OBJECT_NAME([ep].major_id), '' | '', CAST([ep].[value] AS VARCHAR(200)))
     FROM [sys].[extended_properties] AS [ep]
 	   INNER JOIN [sys].[all_objects] AS [o] ON [o].[object_id] = [ep].[major_id]
-    WHERE   [ep].[name] = ''MS_Description''
+    WHERE   [ep].[name] = @extendedPropertyName
 	   AND [o].[is_ms_shipped] = 0 -- User objects only
 	   AND [o].[type] = ''UQ'' -- Unique Constraints
     ORDER BY SCHEMA_NAME([o].[schema_id]), [o].[type_desc], OBJECT_NAME([ep].major_id);
@@ -267,7 +268,7 @@ SET @sql = @sql + N'
 --Verify that one or more views exists w/ extended properties
 IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''V'')
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''V'' AND [ep].[name] = @extendedPropertyName)
 BEGIN
 
     --Build header rows 
@@ -283,7 +284,7 @@ BEGIN
 	   INNER JOIN [sys].[all_objects] AS [o] ON [o].[object_id] = [ep].[major_id]
 	   LEFT JOIN [sys].[columns] AS [SysCols] ON [ep].[major_id] = [SysCols].[object_id]
 							 AND [ep].[minor_id] = [SysCols].[column_id]
-    WHERE   [ep].[name] = ''MS_Description''
+    WHERE   [ep].[name] = @extendedPropertyName
 	   AND [o].[is_ms_shipped] = 0 -- User objects only
 	   AND [o].[type] = ''V'' -- VIEW
     ORDER BY SCHEMA_NAME([o].[schema_id]), [o].[type_desc], OBJECT_NAME([ep].major_id);
@@ -293,13 +294,19 @@ END
 
 /* Query temp table to return all markdown data */
 SET @sql = @sql + N'
---Project all EPs
-SELECT [value]
-FROM #markdown
-ORDER BY [ID] ASC;
+IF (SELECT COUNT(*) FROM #markdown) > 1 --Row #1 is always table of contents header
+    BEGIN
+	   SELECT [value]
+	   FROM #markdown
+	   ORDER BY [ID] ASC;
+    END
+ELSE 
+    SELECT ''No extended properties with the name ['' + @extendedPropertyName + ''].'';
 '
 
-EXEC sp_executesql @sql;
+SET @ParamDefinition = N'@extendedPropertyName SYSNAME';
+
+EXEC sp_executesql @sql, @ParamDefinition, @extendedPropertyName = @epname;
 
 GO
 
