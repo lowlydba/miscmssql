@@ -40,9 +40,9 @@ DECLARE @sql NVARCHAR(MAX);
 DECLARE @ParamDefinition NVARCHAR(500);
 DECLARE @EPObjectTypes NVARCHAR(500);
 
-/* Remove whitespaces from include/exclude lists */
-SET @exclude = REPLACE(@exclude, ' ', '');
-SET @include = REPLACE(@include, ' ', '');
+/* Format lists to avoid inconsistencies */
+SET @exclude = UPPER(REPLACE(@exclude, ' ', ''));
+SET @include = UPPER(REPLACE(@include, ' ', ''));
 
 /* Set list objects that can have extended properties */
 SET @EPObjectTypes = N'VIEW,USER_TABLE,TR,IF,C,D,UQ,SQL_SCALAR_FUNCTION,SQL_STORED_PROCEDURE';
