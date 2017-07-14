@@ -13,12 +13,12 @@ GO
 ALTER   PROCEDURE [dbo].[usp_genEPMarkdown]
 					   @dbname SYSNAME = NULL
 					  ,@epname SYSNAME = 'MS_Description'
-					  ,@exclude NVARCHAR(1000) = NULL
-					  ,@include NVARCHAR(1000) = NULL
+					  ,@exclude NVARCHAR(500) = NULL
+					  ,@include NVARCHAR(500) = NULL
 AS
 SET NOCOUNT ON;
 
---Check if dbname was passed & is valid. 
+/* Check if dbname was passed & is valid */
 IF (@dbname IS NULL) 
     BEGIN;
 		THROW 51000, 'No database provided.', 1;
@@ -30,40 +30,60 @@ ELSE IF NOT EXISTS (SELECT * FROM [sys].[databases] WHERE [name] = @dbname)
 ELSE
     SET @dbname = QUOTENAME(@dbname); --Avoid injections
 
-DECLARE @sql NVARCHAR(MAX);
-DECLARE @ParamDefinition NVARCHAR(500);
-DECLARE @allEPObjects NVARCHAR(500);
-
-SET @allEPObjects = N'''VIEW'', ''USER_TABLE'', ''TR'', ''IF'', ''C'', ''D'', ''UQ'', ''SQL_SCALAR_FUNCTION'', ''SQL_STORED_PROCEDURE'''
-select @allepobjects;
-/* Handle include/exclude list */
---include null, include all
-IF @include IS NULL
-    --exclude null, exclude none
-    IF @exclude IS NULL
-	   BEGIN;
-		  --Set the list equal to all the values (declared as hardcoded above?)
-		  SELECT 'TODO';
-	   END;
-    ELSE IF @exclude IS NOT NULL
-	   BEGIN;
-		  --Include hardcoded list minus the excluded ones (select * from list left join excluded where excluded.id is null)
-		  SELECT 'TODO';
-	   END;
---include not null, include only chosen (ignore exclude)
-ELSE IF @include IS NOT NULL AND @exclude IS NOT NULL
+/* Check that one or none of the filter parameters were used */
+IF @include IS NOT NULL AND @exclude IS NOT NULL
     BEGIN;
 	   THROW 51000, 'Exclude list cannot be used with included list.', 1;
     END;
+
+DECLARE @sql NVARCHAR(MAX);
+DECLARE @ParamDefinition NVARCHAR(500);
+DECLARE @EPObjectTypes NVARCHAR(500);
+
+/* Remove whitespaces from include/exclude lists */
+SET @exclude = REPLACE(@exclude, ' ', '');
+SET @include = REPLACE(@include, ' ', '');
+
+/* Set list objects that can have extended properties */
+SET @EPObjectTypes = N'VIEW,USER_TABLE,TR,IF,C,D,UQ,SQL_SCALAR_FUNCTION,SQL_STORED_PROCEDURE';
+
+/* Set initial db, create temp table, create table of contents */
+SET @sql = N'USE ' + @dbname + '
+
+' + /* Create temp table for list of objects types to generate
+     markdown for based on include/exclude parameters 
+	Set to specific collation due to the makeup of sys.extended_properties */ + '
+DROP TABLE IF EXISTS #objList;
+CREATE TABLE #objList ([type_desc] SYSNAME COLLATE Latin1_General_CI_AS_KS_WS);
+' +
+/* Handle include/exclude list */ + '
+IF @include IS NULL
+    BEGIN
+	    --Only given exclude list
+	   IF @exclude IS NOT NULL
+		  BEGIN;
+			    ' + /* Include hardcoded list minus the excluded ones */ + '
+			    INSERT INTO #objList
+			    SELECT [x].[value] AS [type_desc]
+			    FROM		  STRING_SPLIT(@EPObjectTypes, '','') AS [x]
+			    LEFT JOIN	  STRING_SPLIT(@exclude, '','') AS [y] ON [y].[value] = [x].[value]
+			    WHERE [y].[value] IS NULL;
+		  END;
+	    ' + /* Both are null, used default list */ + '
+	    ELSE IF @exclude IS NULL AND @include IS NULL
+		    BEGIN;
+				INSERT INTO #objList
+			    SELECT [x].[value] AS [type_desc]
+			    FROM STRING_SPLIT(@EPObjectTypes, '','') AS [x];
+		    END;
+    END;
 ELSE IF @include IS NOT NULL
     BEGIN;
-	   --Set the list equal to the passed parameter
-	   SELECT 'TODO';
+		' + /* Set the list equal to the passed parameter */ + '
+		INSERT INTO #objList
+		SELECT [x].[value] AS [type_desc]
+		FROM	 STRING_SPLIT(@include, '','') AS [x];
     END;
-
-
---Set initial db, create temp table, create table of contents
-SET @sql = N'USE ' + @dbname + '
 
 --Create table to hold EP data
 CREATE TABLE #markdown ( 
@@ -98,17 +118,22 @@ SELECT DISTINCT CASE [o].[type_desc]
 			 END AS [ToC]
 FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
+		  LEFT JOIN #objList AS [ol] ON [ol].[type_desc] = [o].[type_desc]
 WHERE   [o].[is_ms_shipped] = 0 --User objects only
     AND [ep].[name] = @extendedPropertyName
-    AND [o].[type_desc] IN (''VIEW'', ''USER_TABLE'', ''TR'', ''IF'', ''C'', ''D'', ''UQ'', ''SQL_SCALAR_FUNCTION'', ''SQL_STORED_PROCEDURE'') --Only supported objects
+    AND [ol].[type_desc] IS NOT NULL
 ORDER BY [ToC] ASC --Ensure alphabetical order so the table matches the order they''re generated in below
 '
    
 /* Generate markdown for check constraint */
 SET @sql = @sql + N'
-IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
+IF EXISTS (SELECT * 
+		  FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''C'' AND [ep].[name] = @extendedPropertyName) 
+		  LEFT JOIN #objList AS [ol] ON [ol].[type_desc] = [o].[type_desc]
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''C'' 
+		  AND [ep].[name] = @extendedPropertyName
+		  AND [ol].[type_desc] IS NOT NULL) 
 BEGIN
     
     INSERT INTO #markdown
@@ -130,9 +155,13 @@ END
 
 /* Generate markdown for default constraint */
 SET @sql = @sql + N'
-IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
+IF EXISTS (SELECT * 
+		  FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''D'' AND [ep].[name] = @extendedPropertyName)
+		  LEFT JOIN #objList AS [ol] ON [ol].[type_desc] = [o].[type_desc]
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''D'' 
+		  AND [ep].[name] = @extendedPropertyName
+		  AND [ol].[type_desc] IS NOT NULL) 
 BEGIN
     
     INSERT INTO #markdown
@@ -153,9 +182,13 @@ END
 
 /* Generate markdown for inline table value functions */
 SET @sql = @sql +  N'
-IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
+IF EXISTS (SELECT * 
+		  FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''IF'' AND [ep].[name] = @extendedPropertyName)
+		  LEFT JOIN #objList AS [ol] ON [ol].[type_desc] = [o].[type_desc]
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''IF'' 
+		  AND [ep].[name] = @extendedPropertyName
+		  AND [ol].[type_desc] IS NOT NULL) 
 BEGIN
     
     INSERT INTO #markdown
@@ -177,9 +210,13 @@ END
 
 /* Generate markdown for scalar functions */
 SET @sql = @sql +  N'
-IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
+IF EXISTS (SELECT * 
+		  FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''FN'' AND [ep].[name] = @extendedPropertyName)
+		  LEFT JOIN #objList AS [ol] ON [ol].[type_desc] = [o].[type_desc]
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''FN'' 
+		  AND [ep].[name] = @extendedPropertyName
+		  AND [ol].[type_desc] IS NOT NULL) 
 BEGIN
     
     INSERT INTO #markdown
@@ -200,9 +237,13 @@ END
 
 /* Generate markdown for stored procedures */
 SET @sql = @sql +  N'
-IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
+IF EXISTS (SELECT * 
+		  FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''P'' AND [ep].[name] = @extendedPropertyName)
+		  LEFT JOIN #objList AS [ol] ON [ol].[type_desc] = [o].[type_desc]
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''P'' 
+		  AND [ep].[name] = @extendedPropertyName
+		  AND [ol].[type_desc] IS NOT NULL) 
 BEGIN
     
     INSERT INTO #markdown
@@ -223,9 +264,13 @@ END
 
 /* Generate markdown for tables */
 SET @sql = @sql +  N'
-IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
+IF EXISTS (SELECT * 
+		  FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''U'' AND [ep].[name] = @extendedPropertyName)
+		  LEFT JOIN #objList AS [ol] ON [ol].[type_desc] = [o].[type_desc]
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''U'' 
+		  AND [ep].[name] = @extendedPropertyName
+		  AND [ol].[type_desc] IS NOT NULL) 
 BEGIN
     
     INSERT INTO #markdown
@@ -249,9 +294,13 @@ END
 
 /* Generate markdown for triggers */
 SET @sql = @sql +  N'
-IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
+IF EXISTS (SELECT * 
+		  FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''TR'' AND [ep].[name] = @extendedPropertyName)
+		  LEFT JOIN #objList AS [ol] ON [ol].[type_desc] = [o].[type_desc]
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''TR'' 
+		  AND [ep].[name] = @extendedPropertyName
+		  AND [ol].[type_desc] IS NOT NULL) 
 BEGIN
     
     INSERT INTO #markdown
@@ -273,9 +322,13 @@ END
 
 /* Generate markdown for unique constraint */
 SET @sql = @sql +  N'
-IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
+IF EXISTS (SELECT * 
+		  FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''UQ'' AND [ep].[name] = @extendedPropertyName)
+		  LEFT JOIN #objList AS [ol] ON [ol].[type_desc] = [o].[type_desc]
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''UQ'' 
+		  AND [ep].[name] = @extendedPropertyName
+		  AND [ol].[type_desc] IS NOT NULL) 
 BEGIN
     
     INSERT INTO #markdown
@@ -296,19 +349,23 @@ END
 
 /* Generate markdown for views */
 SET @sql = @sql + N'
---Verify that one or more views exists w/ extended properties
-IF EXISTS (SELECT * FROM [sys].[all_objects] AS [o]
+' + /* Verify that one or more views exists w/ extended properties */ + '
+IF EXISTS (SELECT * 
+		  FROM [sys].[all_objects] AS [o]
 		  INNER JOIN [sys].[extended_properties] AS [ep] ON [ep].[major_id] = [o].[object_id]
-		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''V'' AND [ep].[name] = @extendedPropertyName)
+		  LEFT JOIN #objList AS [ol] ON [ol].[type_desc] = [o].[type_desc]
+		  WHERE [o].[is_ms_shipped] = 0 AND [o].[type] = ''V'' 
+		  AND [ep].[name] = @extendedPropertyName
+		  AND [ol].[type_desc] IS NOT NULL) 
 BEGIN
 
-    --Build header rows 
+    ' + /* Build header rows */ + ' 
     INSERT INTO #markdown
     VALUES(''## Views'')
 	   , (''| Schema | Name | Col Name | Comment |'')
 	   , (''| ------ | ---- | -------- | ------- |'');
     
-    --Insert data rows
+    ' + /* Insert data */ + '
     INSERT INTO #markdown
     SELECT CONCAT(SCHEMA_NAME([o].[schema_id]), '' | '', OBJECT_NAME([ep].major_id), '' | '', ISNULL([syscols].[name], ''N/A'') , '' | '', CAST([ep].[value] AS VARCHAR(200)))
     FROM [sys].[extended_properties] AS [ep]
@@ -335,9 +392,15 @@ ELSE
     SELECT ''No extended properties with the name ['' + @extendedPropertyName + ''].'';
 '
 
-SET @ParamDefinition = N'@extendedPropertyName SYSNAME';
+/* Build param var to pass in ep name, object list, includes, excludes */
+SET @ParamDefinition = N'@extendedPropertyName SYSNAME
+				    ,@EPObjectTypes NVARCHAR(500)	
+				    ,@include NVARCHAR(500)
+				    ,@exclude NVARCHAR(500)';
 
-EXEC sp_executesql @sql, @ParamDefinition, @extendedPropertyName = @epname;
-
+EXEC sp_executesql @sql, @ParamDefinition
+			  , @extendedPropertyName = @epname
+			  , @EPObjectTypes = @EPObjectTypes
+			  , @include = @include
+			  , @exclude = @exclude;
 GO
-
