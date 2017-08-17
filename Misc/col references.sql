@@ -2,5 +2,5 @@ select DISTINCT CAST(SCHEMA_NAME(ao.schema_id) AS NVARCHAR(30)) 'Schema', CAST(O
 from sys.sql_dependencies sd
 INNER JOIN sys.all_objects ao ON ao.object_id = sd.object_id
 LEFT JOIN sys.all_columns ac ON ac.column_id = sd.referenced_minor_id
-WHERE OBJECT_NAME(sd.referenced_major_id) = 'CohortRoundActual'
- AND (ac.name) = 'Active'
+WHERE OBJECT_NAME(sd.referenced_major_id) = 'table_name'
+ AND (ac.name) = 'col_name'
