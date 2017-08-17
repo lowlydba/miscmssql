@@ -1,10 +1,6 @@
 # MiscMSSQL
 Various MSSQL scripts. Contained/linked to for ease of aggregation. Mostly if not all free. 
 
-# Links
-
-To grab the latest versions of scripts
-
 ## Scripts
 - [Ola's Maintenance Scripts](https://ola.hallengren.com/sql-server-backup.html)
 - [Brent's First Responder Kit](https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit)
