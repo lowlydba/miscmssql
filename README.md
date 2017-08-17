@@ -10,6 +10,7 @@ To grab the latest versions of scripts
 - [Brent's First Responder Kit](https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit)
 - [Glenn Berry's Diagnostic Queries](https://www.sqlskills.com/blogs/glenn/category/dmv-queries/)
 - [Tiger Tool Box](https://github.com/Microsoft/tigertoolbox)
+- [sp_WhoIsActive](http://whoisactive.com/)
 
 ## References
 
