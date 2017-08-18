@@ -30,6 +30,10 @@ Various MSSQL scripts. Contained/linked to for ease of aggregation. Mostly if no
 - [Microsoft mssql-scripter](https://github.com/Microsoft/sql-xplat-cli/)
 - [DBA Tools Powershell Scripts](http://www.dbatools.io)
 
+## Other
+- [Wide World Importer Database](https://github.com/Microsoft/sql-server-samples) - Successor to the AdventureWorks sample database for SQL 2016+
+- [Stack Overflow Database](https://www.brentozar.com/archive/2017/07/new-stack-overflow-public-database-available-2017-06/) - Brent Ozar's packaging of the 2017 Stack Overflow database for demoing and testing
+
 ## Good Reads
 - [Modern Data Analysis: Don't Trust Your Spreadsheet][betterment]
 - [T-SQL Interview Questions](https://www.mssqltips.com/sqlservertip/1450/sql-server-developer-tsql-interview-questions/) (MSSQL Tips)
