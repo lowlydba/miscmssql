@@ -12,7 +12,7 @@ Various MSSQL scripts. Contained/linked to for ease of aggregation. Mostly if no
 
 - [SQL Style Guide](http://www.sqlstyle.guide/)
 
-## Plugins
+## SSMS Plugins
 - [Apex SQL Refactor](http://www.apexsql.com/sql_tools_refactor.aspx)
 - [Apex SQL Complete](http://www.apexsql.com/sql_tools_complete.aspx)
 - [Apex SQL Search](http://www.apexsql.com/sql_tools_search.aspx)
@@ -20,15 +20,17 @@ Various MSSQL scripts. Contained/linked to for ease of aggregation. Mostly if no
 - [Dell Spotlight Essentials](https://www.spotlightessentials.com/spotlight-extensions)
 
 ## Tools
-- [Is It SQL?](http://www.scalesql.com/isitsql/)
-- [SchemaZen](https://github.com/sethreno/schemazen#schemazen---script-and-create-sql-server-objects-quickly)
-- [DBFit](http://www.methodsandtools.com/tools/dbfit.php)
-- [RedGate DLM Dashboard](http://www.red-gate.com/products/dlm/dlm-dashboard/)
-- [SQL Fiddle](http://sqlfiddle.com/) 
-- [Idera SQL Job Manager](https://www.idera.com/productssolutions/freetools/sqljobmanager)
-- [Manduka SQL Code Analyzer](http://www.manduka.tech/#/home)
-- [Microsoft mssql-scripter](https://github.com/Microsoft/sql-xplat-cli/)
-- [DBA Tools Powershell Scripts](http://www.dbatools.io)
+| Name             | Type                 | Author |
+| ---------------- | -------------------- | ------ |
+| [Is It SQL?][isitsql] | Monitoring | [Bill Graziano](http://www.scalesql.com/about.html) |
+| [SchemaZen][schemazen] | Scripting Utility | [Seth Reno](https://github.com/sethreno) |
+| [DBFit][dbfit] | Testing | Yavor Nikolov |
+| [DLM Dashboard](http://www.red-gate.com/products/dlm/dlm-dashboard/) | Devops | RedGate |
+| [SQL Fiddle][fiddle] | Testing | Jake Feasel |
+| [SQL Job Manager](https://www.idera.com/productssolutions/freetools/sqljobmanager) | Admin | Idera |
+| [SQL Code Analyzer](http://www.manduka.tech/#/home) | Development | Manduka |
+| [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli/) | Scripting Utility | Microsoft |
+| [DBA Tools Powershell Scripts](http://www.dbatools.io) | Admin | DBA Tools |
 
 ## Other
 - [Wide World Importer Database](https://github.com/Microsoft/sql-server-samples) - Successor to the AdventureWorks sample database for SQL 2016+
@@ -42,3 +44,11 @@ Various MSSQL scripts. Contained/linked to for ease of aggregation. Mostly if no
 
 [betterment]: https://www.betterment.com/resources/inside-betterment/engineering/modern-data-analysis-dont-trust-your-spreadsheet/
   "Betterment Blog"
+[isitsql]: http://www.scalesql.com/isitsql/
+  "Is It SQL?"
+[schemazen]: https://github.com/sethreno/schemazen#schemazen---script-and-create-sql-server-objects-quickly
+  "SchemaZen"
+[dbfit]: http://www.methodsandtools.com/tools/dbfit.php
+  "DB Fit"
+[fiddle]: http://sqlfiddle.com/
+  "SQL Fiddle"
