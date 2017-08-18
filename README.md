@@ -39,8 +39,9 @@ Various MSSQL scripts. Contained/linked to for ease of aggregation. Mostly if no
 ## Good Reads
 - [Modern Data Analysis: Don't Trust Your Spreadsheet][betterment]
 - [T-SQL Interview Questions](https://www.mssqltips.com/sqlservertip/1450/sql-server-developer-tsql-interview-questions/) (MSSQL Tips)
-- [Developer Interview Questions](https://www.brentozar.com/archive/2009/06/top-10-developer-interview-questions-about-sql-server/) (Brent Ozar)
+- [Developer Interview Questions](https://www.brentozar.com/archive/2009/06/top-10-developer-interview-questions-about-sql-server/) by Brent Ozar
 - [Tuning Cost Threshold](http://sqlblog.com/blogs/jonathan_kehayias/archive/2010/01/19/tuning-cost-threshold-of-parallelism-from-the-plan-cache.aspx)
+- [5 Rules of Normalization][normrules] by Marc Rettig
 
 [betterment]: https://www.betterment.com/resources/inside-betterment/engineering/modern-data-analysis-dont-trust-your-spreadsheet/
   "Betterment Blog"
@@ -52,3 +53,5 @@ Various MSSQL scripts. Contained/linked to for ease of aggregation. Mostly if no
   "DB Fit"
 [fiddle]: http://sqlfiddle.com/
   "SQL Fiddle"
+[normrules]: https://github.com/LowlyDBA/miscmssql/blob/master/Best%20Practices/Marc_Rettig_5_Rules_of_Normalization_Poster.pdf
+  "5 Rules of Normalization"
