@@ -21,6 +21,7 @@ Various MSSQL scripts. Contained/linked to for ease of aggregation. Mostly if no
 
 ## Tools
 | Name             | Type                 | Author |
+| ---- | ---- | --- |
 | [Is It SQL?][isitsql] | Monitoring | [Bill Graziano](http://www.scalesql.com/about.html) |
 | [SchemaZen][schemazen] | Scripting Utility | [Seth Reno](https://github.com/sethreno) |
 | [DBFit][dbfit] | Testing | Yavor Nikolov |
