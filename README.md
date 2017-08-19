@@ -32,24 +32,46 @@ Various MSSQL scripts. Contained/linked to for ease of aggregation. Mostly if no
     <td><a href="http://www.scalesql.com/about.html">Bill Graziano</a></td>
   </tr>
   <tr>
+  <td><a href="http://www.methodsandtools.com/tools/dbfit.php">DBFit</a></td>
+    <td>Testing</td> 
+    <td>Yavor Nikolov</td>
+  </tr>
+  <tr>
   <td><a href="https://github.com/sethreno/schemazen#schemazen---script-and-create-sql-server-objects-quickly">SchemaZen</a></td>
     <td>Scripting</td> 
     <td><a href="https://github.com/sethreno">Seth Reno</a></td>
   </tr>
+  <tr>
+  <td><a href="http://www.red-gate.com/products/dlm/dlm-dashboard/">DLM Dashboard</a></td>
+    <td>Devops</td> 
+    <td>RedGate</td>
+  </tr>
+  <tr>
+  <td><a href="http://sqlfiddle.com/">SQL Fiddle</a></td>
+    <td>Testing</td> 
+    <td>Jake Feasel</td>
+  </tr>
+  <tr>
+  <td><a href="https://www.idera.com/productssolutions/freetools/sqljobmanager">SQL Job Manager</a></td>
+    <td>Admin</td> 
+    <td>Idera</td>
+  </tr>
+  <tr>
+  <td><a href="http://www.manduka.tech/#/home">SQL Code Analyzer</a></td>
+    <td>Development</td> 
+    <td>Manduka</td>
+  </tr>
+  <tr>
+  <td><a href="https://github.com/Microsoft/sql-xplat-cli/">mssql-scripter</a></td>
+    <td>Scripting</td> 
+    <td>Microsoft</td>
+  </tr>
+  <tr>
+  <td><a href="http://sqlfiddle.com/">DBA Tools Powershell Scripts</a></td>
+    <td>Admin</td> 
+    <td>DBA Tools </td>
+  </tr>
 </table>
-<!---
- | Name             | Type                 | Author |
- ---- | ---- | --- 
- |  |  |   |
- |  |  |   |
- | [DBFit][dbfit] | Testing | Yavor Nikolov  |
- | [DLM Dashboard](http://www.red-gate.com/products/dlm/dlm-dashboard/) | Devops | RedGate  |
- | [SQL Fiddle][fiddle] | Testing | Jake Feasel  |
- | [SQL Job Manager](https://www.idera.com/productssolutions/freetools/sqljobmanager) | Admin | Idera  |
- | [SQL Code Analyzer](http://www.manduka.tech/#/home) | Development | Manduka  |
- | [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli/) | Scripting Utility | Microsoft  |
- | [DBA Tools Powershell Scripts](http://www.dbatools.io) | Admin | DBA Tools  |
- --->
  
 ## Other
 - [Wide World Importer Database](https://github.com/Microsoft/sql-server-samples) - Successor to the AdventureWorks sample database for SQL 2016+
