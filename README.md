@@ -27,14 +27,14 @@ Various MSSQL scripts. Contained/linked to for ease of aggregation. Mostly if no
     <th>Author</th>
   </tr>
   <tr>
-    <td>[Is It SQL?][isitsql]</td>
+    <td><a href="http://www.scalesql.com/isitsql/">Is It SQL?</a></td>
     <td>Monitoring</td> 
-    <td>[Bill Graziano](http://www.scalesql.com/about.html)</td>
+    <td><a href="http://www.scalesql.com/about.html">Bill Graziano</a></td>
   </tr>
   <tr>
-    <td>[SchemaZen][schemazen]</td>
-    <td>Scripting Utility</td> 
-    <td>[Seth Reno](https://github.com/sethreno)</td>
+  <td><a href="https://github.com/sethreno/schemazen#schemazen---script-and-create-sql-server-objects-quickly">SchemaZen</a></td>
+    <td>Scripting</td> 
+    <td><a href="https://github.com/sethreno">Seth Reno</a></td>
   </tr>
 </table>
 <!---
@@ -61,6 +61,7 @@ Various MSSQL scripts. Contained/linked to for ease of aggregation. Mostly if no
 - [Developer Interview Questions](https://www.brentozar.com/archive/2009/06/top-10-developer-interview-questions-about-sql-server/) by Brent Ozar
 - [Tuning Cost Threshold](http://sqlblog.com/blogs/jonathan_kehayias/archive/2010/01/19/tuning-cost-threshold-of-parallelism-from-the-plan-cache.aspx)
 - [5 Rules of Normalization][normrules] by Marc Rettig
+
 
 [betterment]: https://www.betterment.com/resources/inside-betterment/engineering/modern-data-analysis-dont-trust-your-spreadsheet/
   "Betterment Blog"
