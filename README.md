@@ -20,10 +20,28 @@ Various MSSQL scripts. Contained/linked to for ease of aggregation. Mostly if no
 - [Dell Spotlight Essentials](https://www.spotlightessentials.com/spotlight-extensions)
 
 ## Tools
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th> 
+    <th>Author</th>
+  </tr>
+  <tr>
+    <td>[Is It SQL?][isitsql]</td>
+    <td>Monitoring</td> 
+    <td>[Bill Graziano](http://www.scalesql.com/about.html)</td>
+  </tr>
+  <tr>
+    <td>[SchemaZen][schemazen]</td>
+    <td>Scripting Utility</td> 
+    <td>[Seth Reno](https://github.com/sethreno)</td>
+  </tr>
+</table>
+<!---
  | Name             | Type                 | Author |
  ---- | ---- | --- 
- | [Is It SQL?][isitsql] | Monitoring | [Bill Graziano](http://www.scalesql.com/about.html)  |
- | [SchemaZen][schemazen] | Scripting Utility | [Seth Reno](https://github.com/sethreno)  |
+ |  |  |   |
+ |  |  |   |
  | [DBFit][dbfit] | Testing | Yavor Nikolov  |
  | [DLM Dashboard](http://www.red-gate.com/products/dlm/dlm-dashboard/) | Devops | RedGate  |
  | [SQL Fiddle][fiddle] | Testing | Jake Feasel  |
@@ -31,7 +49,8 @@ Various MSSQL scripts. Contained/linked to for ease of aggregation. Mostly if no
  | [SQL Code Analyzer](http://www.manduka.tech/#/home) | Development | Manduka  |
  | [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli/) | Scripting Utility | Microsoft  |
  | [DBA Tools Powershell Scripts](http://www.dbatools.io) | Admin | DBA Tools  |
-
+ --->
+ 
 ## Other
 - [Wide World Importer Database](https://github.com/Microsoft/sql-server-samples) - Successor to the AdventureWorks sample database for SQL 2016+
 - [Stack Overflow Database](https://www.brentozar.com/archive/2017/07/new-stack-overflow-public-database-available-2017-06/) - Brent Ozar's packaging of the 2017 Stack Overflow database for demoing and testing
