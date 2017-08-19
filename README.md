@@ -20,17 +20,17 @@ Various MSSQL scripts. Contained/linked to for ease of aggregation. Mostly if no
 - [Dell Spotlight Essentials](https://www.spotlightessentials.com/spotlight-extensions)
 
 ## Tools
- Name             | Type                 | Author 
+ | Name             | Type                 | Author |
  ---- | ---- | --- 
- [Is It SQL?][isitsql] | Monitoring | [Bill Graziano](http://www.scalesql.com/about.html) 
- [SchemaZen][schemazen] | Scripting Utility | [Seth Reno](https://github.com/sethreno) 
- [DBFit][dbfit] | Testing | Yavor Nikolov 
- [DLM Dashboard](http://www.red-gate.com/products/dlm/dlm-dashboard/) | Devops | RedGate 
- [SQL Fiddle][fiddle] | Testing | Jake Feasel 
- [SQL Job Manager](https://www.idera.com/productssolutions/freetools/sqljobmanager) | Admin | Idera 
- [SQL Code Analyzer](http://www.manduka.tech/#/home) | Development | Manduka 
- [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli/) | Scripting Utility | Microsoft 
- [DBA Tools Powershell Scripts](http://www.dbatools.io) | Admin | DBA Tools 
+ | [Is It SQL?][isitsql] | Monitoring | [Bill Graziano](http://www.scalesql.com/about.html)  |
+ | [SchemaZen][schemazen] | Scripting Utility | [Seth Reno](https://github.com/sethreno)  |
+ | [DBFit][dbfit] | Testing | Yavor Nikolov  |
+ | [DLM Dashboard](http://www.red-gate.com/products/dlm/dlm-dashboard/) | Devops | RedGate  |
+ | [SQL Fiddle][fiddle] | Testing | Jake Feasel  |
+ | [SQL Job Manager](https://www.idera.com/productssolutions/freetools/sqljobmanager) | Admin | Idera  |
+ | [SQL Code Analyzer](http://www.manduka.tech/#/home) | Development | Manduka  |
+ | [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli/) | Scripting Utility | Microsoft  |
+ | [DBA Tools Powershell Scripts](http://www.dbatools.io) | Admin | DBA Tools  |
 
 ## Other
 - [Wide World Importer Database](https://github.com/Microsoft/sql-server-samples) - Successor to the AdventureWorks sample database for SQL 2016+
