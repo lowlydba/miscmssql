@@ -11,6 +11,7 @@ Various MSSQL scripts. Contained/linked to for ease of aggregation. Mostly if no
 ## References
 
 - [SQL Style Guide](http://www.sqlstyle.guide/)
+- [T-SQL Style Guide](https://lowlydba.github.io/tsqlstyle.guide/)
 
 ## SSMS Plugins
 - [Apex SQL Refactor](http://www.apexsql.com/sql_tools_refactor.aspx)
