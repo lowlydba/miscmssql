@@ -1,5 +1,5 @@
 # MiscMSSQL
-Various MSSQL scripts. Contained/linked to for ease of aggregation. Mostly if not all free. 
+Various MSSQL scripts and tools. Contained herein or linked to for ease of aggregation. Mostly if not all free. 
 
 ## Scripts
 - [Ola's Maintenance Scripts](https://github.com/olahallengren/sql-server-maintenance-solution)
@@ -71,7 +71,7 @@ Various MSSQL scripts. Contained/linked to for ease of aggregation. Mostly if no
   <tr>
   <td><a href="http://sqlfiddle.com/">DBA Tools Powershell Scripts</a></td>
     <td>Admin</td> 
-    <td>DBA Tools </td>
+    <td><a href="https://dbatools.io/team/">DBA Tools Team</a></td>
   </tr>
 </table>
  
