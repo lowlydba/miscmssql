@@ -73,6 +73,11 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
     <td>Admin</td> 
     <td><a href="https://dbatools.io/team/">DBA Tools Team</a></td>
   </tr>
+    <tr>
+  <td><a href="https://flywaydb.org/">Flyway</a></td>
+    <td>Migrations</td> 
+    <td><a href="https://axelfontaine.com/">Axel Fontaine</a></td>
+  </tr>
 </table>
  
 ## Other
