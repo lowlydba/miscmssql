@@ -37,7 +37,7 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
   <tr>
   <td><a href="http://www.methodsandtools.com/tools/dbfit.php">DBFit</a></td>
     <td>Testing</td> 
-    <td>Yavor Nikolov</td>
+    <td><a href="https://javornikolov.wordpress.com/">Yavor Nikolov</a></td>
   </tr>
   <tr>
   <td><a href="https://github.com/sethreno/schemazen#schemazen---script-and-create-sql-server-objects-quickly">SchemaZen</a></td>
@@ -79,6 +79,10 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
     <td>Migrations</td> 
     <td><a href="https://axelfontaine.com/">Axel Fontaine</a></td>
   </tr>
+    <td><a href="https://pastetheplan.com/">Paste The Plan</a></td>
+    <td>Tuning/Sharing</td> 
+    <td><a href="https://www.brentozar.com/">Brent Ozar Unlimited</a></td>
+  </tr>
 </table>
  
 ## Other
@@ -87,7 +91,7 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
 
 ## Good Reads
 - [Modern Data Analysis: Don't Trust Your Spreadsheet][betterment]
-- [T-SQL Interview Questions](https://www.mssqltips.com/sqlservertip/1450/sql-server-developer-tsql-interview-questions/) (MSSQL Tips)
+- [T-SQL Interview Questions](https://www.mssqltips.com/sqlservertip/1450/sql-server-developer-tsql-interview-questions/) by [Jeremy Kadlec](https://www.mssqltips.com/sqlserverauthor/38/jeremy-kadlec/)
 - [Developer Interview Questions](https://www.brentozar.com/archive/2009/06/top-10-developer-interview-questions-about-sql-server/) by Brent Ozar
 - [Tuning Cost Threshold](http://sqlblog.com/blogs/jonathan_kehayias/archive/2010/01/19/tuning-cost-threshold-of-parallelism-from-the-plan-cache.aspx)
 - [5 Rules of Normalization][normrules] by Marc Rettig
