@@ -7,6 +7,7 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
 - [Glenn Berry's Diagnostic Queries](https://www.sqlskills.com/blogs/glenn/category/dmv-queries/)
 - [Tiger Tool Box](https://github.com/Microsoft/tigertoolbox)
 - [sp_WhoIsActive](http://whoisactive.com/downloads/)
+- [sp_ForEachDB](https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit/blob/dev/sp_foreachdb.sql), an [sp_MSForEachDB](http://sqlblog.com/blogs/aaron_bertrand/archive/2010/12/29/a-more-reliable-and-more-flexible-sp-msforeachdb.aspx) replacement. 
 
 ## References
 
@@ -51,8 +52,8 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
   </tr>
   <tr>
   <td><a href="http://sqlfiddle.com/">SQL Fiddle</a></td>
-    <td>Testing</td> 
-    <td>Jake Feasel</td>
+    <td>Testing/Sharing</td> 
+    <td><a href="http://stackoverflow.com/users/808921/jake-feasel">Jake Feasel</a></td>
   </tr>
   <tr>
   <td><a href="https://www.idera.com/productssolutions/freetools/sqljobmanager">SQL Job Manager</a></td>
@@ -88,6 +89,7 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
 ## Other
 - [Wide World Importer Database](https://github.com/Microsoft/sql-server-samples) - Successor to the AdventureWorks sample database for SQL 2016+
 - [Stack Overflow Database](https://www.brentozar.com/archive/2017/07/new-stack-overflow-public-database-available-2017-06/) - Brent Ozar's packaging of the 2017 Stack Overflow database for demoing and testing
+- [idownvotedbecau.se](http://idownvotedbecau.se/) - Pages containing downvoting rationale for adding to Stack Exchange comments.
 
 ## Good Reads
 - [Modern Data Analysis: Don't Trust Your Spreadsheet][betterment]
