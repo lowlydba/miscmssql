@@ -80,6 +80,7 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
     <td>Migrations</td> 
     <td><a href="https://axelfontaine.com/">Axel Fontaine</a></td>
   </tr>
+  <tr>
     <td><a href="https://pastetheplan.com/">Paste The Plan</a></td>
     <td>Tuning/Sharing</td> 
     <td><a href="https://www.brentozar.com/">Brent Ozar Unlimited</a></td>
