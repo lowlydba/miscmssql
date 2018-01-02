@@ -15,7 +15,7 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
 - [T-SQL Style Guide](https://lowlydba.github.io/tsqlstyle.guide/)
 - [DBATools Build Reference](https://sqlcollaborative.github.io/builds)
 - [MSSQL Waitopedia](https://www.spotlightessentials.com/public/waitopedia)
-- [Module Signing Info](https://modulesigning.info/])
+- [Module Signing Info](https://modulesigning.info/)
 
 ## SSMS Plugins
 - [Apex SQL Refactor](http://www.apexsql.com/sql_tools_refactor.aspx)
