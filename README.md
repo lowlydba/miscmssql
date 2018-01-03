@@ -100,6 +100,7 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
 - [Tuning Cost Threshold](http://sqlblog.com/blogs/jonathan_kehayias/archive/2010/01/19/tuning-cost-threshold-of-parallelism-from-the-plan-cache.aspx)
 - [5 Rules of Normalization][normrules] by Marc Rettig
 - [T-SQL Code Smells][smelly] by [Phil Factor][phil]
+- [Fighting Evil in Your Code: Comments on Comments](https://www.red-gate.com/simple-talk/opinion/opinion-pieces/fighting-evil-code-comments-comments/) by [Michael Sorens](https://www.red-gate.com/simple-talk/author/michael-sorens/)
 
 
 [betterment]: https://www.betterment.com/resources/inside-betterment/engineering/modern-data-analysis-dont-trust-your-spreadsheet/
