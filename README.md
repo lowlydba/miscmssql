@@ -17,7 +17,7 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
 - [DBATools Build Reference](https://sqlcollaborative.github.io/builds)
 - [MSSQL Waitopedia](https://www.spotlightessentials.com/public/waitopedia)
 - [Module Signing Info](https://modulesigning.info/)
-- [SQL 2016 & Azure Database Permissions Poster](assets/Permissions_Poster_2017_and_SQLDB.pdf)
+- [SQL 2016 & Azure Database Permissions Poster](assets/Permissions_Poster_2017_and_SQLDB.PDF)
 
 ## SSMS Plugins
 - [Apex SQL Refactor](http://www.apexsql.com/sql_tools_refactor.aspx)
