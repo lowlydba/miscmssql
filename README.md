@@ -7,7 +7,7 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
 - [Glenn Berry's Diagnostic Queries](https://www.sqlskills.com/blogs/glenn/category/dmv-queries/)
 - [Tiger Tool Box](https://github.com/Microsoft/tigertoolbox)
 - [sp_WhoIsActive](http://whoisactive.com/downloads/)
-- [sp_ForEachDB](https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit/blob/dev/sp_foreachdb.sql) - replacement for the undocumented [sp_MSForEachDB](http://sqlblog.com/blogs/aaron_bertrand/archive/2010/12/29/a-more-reliable-and-more-flexible-sp-msforeachdb.aspx) 
+- [sp_ForEachDB](https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit/blob/dev/sp_foreachdb.sql) - replacement for the undocumented [sp_MSForEachDB](http://sqlblog.com/blogs/aaron_bertrand/archive/2010/12/29/a-more-reliable-and-more-flexible-sp-msforeachdb.aspx)
 - [Jeff Moden's DelimitedSplit8k](http://www.sqlservercentral.com/articles/Tally+Table/72993/) - string splitter function
 
 ## References
@@ -17,6 +17,7 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
 - [DBATools Build Reference](https://sqlcollaborative.github.io/builds)
 - [MSSQL Waitopedia](https://www.spotlightessentials.com/public/waitopedia)
 - [Module Signing Info](https://modulesigning.info/)
+- [SQL 2016 & Azure Database Permissions Poster](assets/Permissions_Poster_2017_and_SQLDB.pdf)
 
 ## SSMS Plugins
 - [Apex SQL Refactor](http://www.apexsql.com/sql_tools_refactor.aspx)
