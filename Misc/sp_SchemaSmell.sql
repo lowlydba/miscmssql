@@ -120,7 +120,7 @@ HAVING SUM(CAST(ac.is_nullable AS TINYINT)) > COUNT(*) / 2.0
 IF NOT EXISTS(SELECT * FROM sys.foreign_keys)
 	BEGIN
 		INSERT INTO #results
-		SELECT 13, 'Foreign Keys', 'DB', DB_NAME(), NULL, N'No foreign keys exist in the database. It is best practice to use them.', N'https://docs.microsoft.com/en-us/sql/relational-databases/tables/primary-and-foreign-key-constraints#FKeys'
+		SELECT 13, 'Foreign Keys', 'DB', DB_NAME(), NULL, N'No foreign keys exist in the database. Are you sure that''s necessary?', N'https://docs.microsoft.com/en-us/sql/relational-databases/tables/primary-and-foreign-key-constraints#FKeys'
 	END
 
 /* CHeck 14: numeric or decimal without trailing 0s */
@@ -131,6 +131,8 @@ FROM sys.objects as o
     INNER JOIN sys.systypes as st on st.xtype = ac.system_type_id
 WHERE ac.scale = 0
     AND st.name IN ('decimal', 'numeric')
+
+	
 
 select * from #results;
 
