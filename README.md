@@ -93,6 +93,12 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
     <td>Tuning/Sharing</td>
     <td><a href="https://www.brentozar.com/">Brent Ozar Unlimited</a></td>
   </tr>
+  <tr>
+    <td><a href="https://senseful.github.io/text-table/">Format Text as Table</a></td>
+    <td>Sharing</td>
+    <td><a href="https://senseful.github.io/">Senseful Solutions</a></td>
+  </tr>
+
 </table>
 
 ## Other
