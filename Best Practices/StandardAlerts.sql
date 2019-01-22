@@ -2,6 +2,7 @@
 BEGIN TRANSACTION
   
 /*************************************************
+https://docs.microsoft.com/en-us/sql/relational-databases/errors-events/database-engine-error-severities?view=sql-server-2017
 Alter these variables to your preferences:
 *************************************************/
 DECLARE
