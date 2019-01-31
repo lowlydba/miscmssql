@@ -43,7 +43,11 @@ Enter alters on specific errors here:
 (9002 is included for demonstration purposes only)
 *************************************************/
 INSERT @TBL_ALERTS (ERRORNO, ALERT_NAME) VALUES
-    (9002, '9002 - Transaction log full')
+    (9002, '9002 - Transaction log full'),
+    (34050, '34050 - Policy Failure (On Change Prevent)'),
+    (34051, '34051 - Policy Failure (On Demand)'),
+    (34052, '34052 - Policy Failure (On Schedule)'),
+    (34053, '34053 - Policy Failure (On Change)');
   
 SELECT @NO_TOTAL_ALERTS = COUNT(*) FROM @TBL_ALERTS
   
