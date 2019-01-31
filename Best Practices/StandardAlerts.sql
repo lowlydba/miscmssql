@@ -43,11 +43,21 @@ Enter alters on specific errors here:
 (9002 is included for demonstration purposes only)
 *************************************************/
 INSERT @TBL_ALERTS (ERRORNO, ALERT_NAME) VALUES
-    (9002, '9002 - Transaction log full'),
-    (34050, '34050 - Policy Failure (On Change Prevent)'),
-    (34051, '34051 - Policy Failure (On Demand)'),
-    (34052, '34052 - Policy Failure (On Schedule)'),
-    (34053, '34053 - Policy Failure (On Change)');
+    (9002, '9002 - Transaction log full')
+    ,(34050, '34050 - Policy Failure (On Change Prevent)')
+    ,(34051, '34051 - Policy Failure (On Demand)')
+    ,(34052, '34052 - Policy Failure (On Schedule)')
+    ,(34053, '34053 - Policy Failure (On Change)')
+    ,(35273, '35273 - AG - Inaccessible Database')
+		,(35274, '35274 - AG - Recovery Pending for Secondary')
+		,(35275, '35275 - AG - Error While in Suspect State')
+		,(35254, '35254 - AG - Error Accessing Metadata')
+		,(35279, '35279 - AG - Attempt to Join Rejected')
+		,(35262, '35262 - AG - Skipped startup of Database')
+		,(35276, '35276 - AG - Failed to Schedule task')
+		,(1480,  '1480 - AG - Role Change')
+		,(35264, '35264 - AG - Data Movement Suspended')
+		,(35265, '35265 - AG - Data Movement Resumed');
   
 SELECT @NO_TOTAL_ALERTS = COUNT(*) FROM @TBL_ALERTS
   
