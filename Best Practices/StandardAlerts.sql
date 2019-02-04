@@ -55,7 +55,7 @@ BEGIN
   @severity=0, 
   @enabled=1, 
   @delay_between_responses=0, 
-  @include_event_description_in=1, 
+  @include_event_description_in=1;
   GO
   EXEC msdb.dbo.sp_add_notification @alert_name=N'''+ @thisErrorName + ''', 
     @operator_name=N''' + @operator + ''', @notification_method = 1
@@ -85,7 +85,7 @@ BEGIN
   @severity=' + @thisSeverityNumber + ', 
   @enabled=1, 
   @delay_between_responses=0, 
-  @include_event_description_in=1, 
+  @include_event_description_in=1;
   GO
   EXEC msdb.dbo.sp_add_notification @alert_name=N'''+ @thisSeverityName + ''', 
     @operator_name=N''' + @operator + ''', @notification_method = 1
