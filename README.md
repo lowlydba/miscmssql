@@ -49,7 +49,7 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
   <tr>
     <td><a href="https://github.com/sethreno/schemazen#schemazen---script-and-create-sql-server-objects-quickly">SchemaZen</a></td>
     <td>Scripting</td>
-    <td><ul><li>[x] </li></ul></td>
+    <td>👍</td>
     <td><a href="https://github.com/sethreno">Seth Reno</a></td>
   </tr>
   <tr>
@@ -67,25 +67,25 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
   <tr>
     <td><a href="https://github.com/Microsoft/sql-xplat-cli/">mssql-scripter</a></td>
     <td>Scripting</td>
-    <td><ul><li>[x] </li></ul></td>
+    <td>👍</td>
     <td>Microsoft</td>
   </tr>
   <tr>
     <td><a href="https://dbatools.io">DBA Tools Powershell Scripts</a></td>
     <td>Admin</td>
-    <td><ul><li>[x] </li></ul></td>
+    <td>👍</td>
     <td><a href="https://dbatools.io/team/">SQL Collaborative</a></td>
   </tr>
   <tr>
     <td><a href="https://dbachecks.io">DBA Checks Powershell Scripts</a></td>
     <td>Admin</td>
-    <td><ul><li>[x] </li></ul></td>
+    <td>👍</td>
     <td><a href="https://dbatools.io/team/">SQL Collaborative</a></td>
   </tr>
   <tr>
     <td><a href="https://flywaydb.org/">Flyway</a></td>
     <td>Migrations</td>
-    <td><ul><li>[x] </li></ul></td>
+    <td>👍</td>
     <td><a href="https://axelfontaine.com/">Axel Fontaine</a></td>
   </tr>
   <tr>
@@ -103,7 +103,7 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
   <tr>
     <td><a href="https://sqlwatch.io/">SQL Watch</a></td>
     <td>Monitoring</td>
-    <td><ul><li>[x] </li></ul></td>
+    <td>👍</td>
     <td><a href="https://marcin.gminski.net/">Marcin Gminski</a></td>
   </tr>
 </table>
