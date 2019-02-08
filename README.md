@@ -110,7 +110,7 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
 
 ## Other
 - [Wide World Importer Database](https://github.com/Microsoft/sql-server-samples) - Successor to the AdventureWorks sample database for SQL 2016+
-- [Stack Overflow Database](https://www.brentozar.com/archive/2017/07/new-stack-overflow-public-database-available-2017-06/) - Brent Ozar's packaging of the 2017 Stack Overflow database for demoing and testing
+- [Stack Overflow Database](https://www.brentozar.com/archive/2015/10/how-to-download-the-stack-overflow-database-via-bittorrent/) - Brent Ozar's packaging of the Stack Overflow database for demoing and testing
 - [idownvotedbecau.se](http://idownvotedbecau.se/) - Pages containing downvoting rationale for adding to Stack Exchange comments.
 
 ## Good Reads
