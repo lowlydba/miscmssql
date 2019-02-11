@@ -3,8 +3,11 @@ SET NOCOUNT ON
 DECLARE @operator VARCHAR(50) = 'DBErrors';
 
 DECLARE @errorNumbers TABLE ( ErrorNumber INT, ErrorName VARCHAR(100), NotificationMessage NVARCHAR(250))
-INSERT INTO @errorNumbers VALUES 
-		 (35273, '35273 - AG - Inaccessible Database', '')
+INSERT INTO @errorNumbers VALUES
+		 (823, '823 - Corruption', 'https://support.microsoft.com/en-us/help/2015755/how-to-troubleshoot-a-msg-823-error-in-sql-server')
+	   	,(824, '824 - Corruption', 'https://support.microsoft.com/en-us/help/2015756/how-to-troubleshoot-msg-824-in-sql-server')
+		,(825, '825 - Corruption', 'https://support.microsoft.com/en-us/help/2015757/how-to-troubleshoot-msg-825-read-retry-in-sql-server')
+		,(35273, '35273 - AG - Inaccessible Database', '')
 		,(35274, '35274 - AG - Recovery Pending for Secondary', '')
 		,(35275, '35275 - AG - Error While in Suspect State', '')
 		,(35254, '35254 - AG - Error Accessing Metadata', '')
