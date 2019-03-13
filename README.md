@@ -35,12 +35,6 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
     <th>Author</th>
   </tr>
   <tr>
-    <td><a href="http://www.scalesql.com/isitsql/">Is It SQL?</a></td>
-    <td>Monitoring</td>
-    <td></td>
-    <td><a href="http://www.scalesql.com/about.html">Bill Graziano</a></td>
-  </tr>
-  <tr>
     <td><a href="http://www.methodsandtools.com/tools/dbfit.php">DBFit</a></td>
     <td>Testing</td>
     <td></td>
@@ -105,6 +99,18 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
     <td>Monitoring</td>
     <td>👍</td>
     <td><a href="https://marcin.gminski.net/">Marcin Gminski</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://www.spotlightcloud.io/pricing">Spotlight Cloud Basic</a></td>
+    <td>Monitoring</td>
+    <td></td>
+    <td><a href="https://www.quest.com/">Quest</a></td>
+  </tr>
+  <tr>
+    <td><a href="http://www.scalesql.com/isitsql/">Is It SQL?</a></td>
+    <td>Monitoring</td>
+    <td></td>
+    <td><a href="http://www.scalesql.com/about.html">Bill Graziano</a></td>
   </tr>
 </table>
 
