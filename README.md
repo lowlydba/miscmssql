@@ -18,6 +18,7 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
 - [MSSQL Waitopedia](https://www.spotlightessentials.com/public/waitopedia)
 - [Module Signing Info](https://modulesigning.info/)
 - [SQL 2017 & Azure Database Permissions Poster](assets/Permissions_Poster_2017_and_SQLDB.PDF)
+- [The Data Loading Performance Guide](https://docs.microsoft.com/en-us/previous-versions/sql/sql-server-2008/dd425070(v=sql.100))
 
 ## SSMS Plugins
 - [Apex SQL Refactor](http://www.apexsql.com/sql_tools_refactor.aspx)
