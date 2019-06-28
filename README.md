@@ -129,6 +129,7 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
 - [5 Rules of Normalization][normrules] by Marc Rettig
 - [T-SQL Code Smells][smelly] by [Phil Factor][phil]
 - [Fighting Evil in Your Code: Comments on Comments](https://www.red-gate.com/simple-talk/opinion/opinion-pieces/fighting-evil-code-comments-comments/) by [Michael Sorens](https://www.red-gate.com/simple-talk/author/michael-sorens/)
+- [The Security of Modern Password Expiration: An Algorithmic Framework and Empirical Analysis](https://www.cs.unc.edu/~reiter/papers/2010/CCS.pdf)
 
 ### AlwaysOn
 - [The AlwaysOn Health Model Part 2 - Extending the Health Model](https://techcommunity.microsoft.com/t5/SQL-Server/The-AlwaysOn-Health-Model-Part-2-Extending-the-Health-Model/ba-p/384043?advanced=false&collapse_discussion=true&q=the%20alwayson%20health%20model&search_type=thread)
