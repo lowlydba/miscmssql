@@ -60,6 +60,12 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
     <td></td>
     <td><a href="http://stackoverflow.com/users/808921/jake-feasel">Jake Feasel</a></td>
   </tr>
+   <tr>
+    <td><a href="https://dbfiddle.uk/">DB Fiddle</a></td>
+    <td>Testing/Sharing</td>
+    <td></td>
+    <td><a href="https://douglastechnology.co.uk/">Jack Douglas</a></td>
+  </tr>
   <tr>
     <td><a href="https://github.com/Microsoft/sql-xplat-cli/">mssql-scripter</a></td>
     <td>Scripting</td>
@@ -134,6 +140,7 @@ Various MSSQL scripts and tools. Contained herein or linked to for ease of aggre
 ### AlwaysOn
 - [The AlwaysOn Health Model Part 2 - Extending the Health Model](https://techcommunity.microsoft.com/t5/SQL-Server/The-AlwaysOn-Health-Model-Part-2-Extending-the-Health-Model/ba-p/384043?advanced=false&collapse_discussion=true&q=the%20alwayson%20health%20model&search_type=thread)
 - [When Always On Isn't: Handling Outages In Your Application](https://www.brentozar.com/archive/2017/01/always-isnt-handling-outages-application/) by Brent Ozar
+- [SQL Server 2016/2017: Availability group secondary replica redo model and performance](https://blogs.msdn.microsoft.com/sql_server_team/sql-server-20162017-availability-group-secondary-replica-redo-model-and-performance/) - Detailed information on parallelism in redo worker threads
 
 [betterment]: https://www.betterment.com/resources/inside-betterment/engineering/modern-data-analysis-dont-trust-your-spreadsheet/
   "Betterment Blog"
